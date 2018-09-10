@@ -22,7 +22,7 @@ class Game{
 	}
 	//returns a list of shuffled items to be used as icons in game.
 	getShuffledItems(){
-		var items = ["birthday-cake","bell","bicycle", "bolt", "bomb","check", "bug","gamepad"];
+		let items = ["birthday-cake","bell","bicycle", "bolt", "bomb","check", "bug","gamepad"];
 		for(let index = 0; index < items.length; index+=1){
 			let randNum = Math.floor(Math.random() * items.length);
 			let temp = items[index];
@@ -51,7 +51,7 @@ class Game{
 			return;
 		}else{
 			this.updateMoveCount();
-			var cachedCard = this.cachedCard;
+			let cachedCard = this.cachedCard;
 			if(cardToCompare.getAttribute('card-type') == cachedCard.getAttribute('card-type')){
 				this.matchCards(cardToCompare)
 				return;
@@ -67,6 +67,7 @@ class Game{
 
 		}
 	}
+	//TODO: Fix animation timing/handling
 	//this method will resize and shrink card when matched with another.
 	resizeAndShrink(targetElement){
 		setTimeout(()=>{targetElement.setAttribute('style', 'transform: scale(1.2,1.2);')},20);

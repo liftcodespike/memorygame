@@ -1,10 +1,8 @@
-
-
 document.addEventListener("DOMContentLoaded",  function(){
 	let game = new Game();
 	let lastThree = [];
 	let setClick = function(e){
-		let targetElement = e.target;	
+		let targetElement = e.target;
 		if(targetElement.tagName === "LI"){
 			game.checkForPossibleFlip(targetElement);
 		}
