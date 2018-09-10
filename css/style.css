@@ -1,7 +1,11 @@
+body{
+	text-align: center
+}
 ul{
-	height: 95vh;
+	margin: auto;
+	height: 90vh;
 	padding-left: 0px;
-	max-width: 78%;
+	max-width: 60%;
 	border: thin solid black;
 	border-radius: 10px;
 	display: flex;
@@ -9,7 +13,11 @@ ul{
 	justify-content: center;
 	background-image: linear-gradient(to bottom right, #00d3ba, #b479d6);
 	padding-top: 2%;
-
+	box-shadow: 3px 3px 21px black;
+}
+#counter{
+	margin-top: 1%;
+	font-size: 1em;
 
 }
 
@@ -23,13 +31,15 @@ li{
 	list-style: none;
 	justify-content: center;
 	cursor: pointer;
-	box-shadow: 3px 3px 21px;;
+	box-shadow: 3px 3px 21px;
 
 }
 .fa{
 	text-align: center;
 	vertical-align: middle;
+	background-color: #00d4ba;
 	line-height: 17vh;
+	color: white;
 }
 .hidden{
 	background-color: #253d4b;

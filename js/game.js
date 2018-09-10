@@ -2,8 +2,15 @@
 class Game{
 	constructor(){
 		this.cachedCard = null;
+		this.moveCount = 0;
+		this.matches= 0;
 	}
 
+	updateMoveCount(){
+		this.moveCount+=1;
+		let counter = document.getElementById('counter');
+		counter.innerHTML = `<strong>Moves Made: </strong> ${this.moveCount}`;
+	}
 	//returns a list of shuffled items.
 	getShuffledItems(){
 		var items = ["birthday-cake","bell","bicycle", "bolt", "bomb","check", "bug","gamepad"];
@@ -15,21 +22,26 @@ class Game{
 		}
 		return items;
 	}
-
+	//if two cards cards, it animates them.
 	matchCards(cardToCompare){
 		this.resizeAndShrink(cardToCompare);
 		cardToCompare.setAttribute('matched', true);
 		this.resizeAndShrink(this.cachedCard);
 		this.cachedCard.setAttribute('matched', true);
 		this.cachedCard = null;
+		this.matches +=1;
+		if(this.matches == 8){
+			alert(`You have won! It took ${this.moveCount} moves! Click reset to restart.`)
+		}
 	}
-
+	//this handle comparing two cards. if no card to compare against, it sets it.
 	compareToCachedCard(cardToCompare){
 		if(this.cachedCard == null){
 			this.cachedCard = cardToCompare;
 			this.shake(cardToCompare);
 			return;
 		}else{
+			this.updateMoveCount();
 			var cachedCard = this.cachedCard;
 			if(cardToCompare.getAttribute('card-type') == cachedCard.getAttribute('card-type')){
 				this.matchCards(cardToCompare)
@@ -77,8 +89,6 @@ class Game{
 			setTimeout(()=>{targetElement.setAttribute('style', 'transform: rotate(0deg);')},150);
 			if(timesToShake >1){
 				setTimeout(()=>{this.shake(targetElement, timesToShake-1)}, 100);
-			}else{
-			
 			}
 	}	
 
@@ -96,5 +106,6 @@ class Game{
 		fragment.appendChild(ul);
 		return fragment;
 	}
+
 
 }
