@@ -21,5 +21,17 @@ li{
 	border: thin solid black;
 	border-radius: 10px;
 	list-style: none;
-	background-color: #253d4b;
+	justify-content: center;
+	cursor: pointer;
+
 }
+.fa{
+	text-align: center;
+	vertical-align: middle;
+	line-height: 17vh;
+}
+.hidden{
+	background-color: #253d4b;
+	background-image: ['card-type'];
+}
+
