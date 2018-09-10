@@ -6,6 +6,7 @@ class Game{
 		this.matches= 0;
 	}
 
+	//updates amount of moves taken.
 	updateMoveCount(){
 		this.moveCount+=1;
 		let counter = document.getElementById('counter');
@@ -19,7 +20,7 @@ class Game{
 			stars.innerHTML = `<p class="fa fa-star"></p>`
 		}
 	}
-	//returns a list of shuffled items.
+	//returns a list of shuffled items to be used as icons in game.
 	getShuffledItems(){
 		var items = ["birthday-cake","bell","bicycle", "bolt", "bomb","check", "bug","gamepad"];
 		for(let index = 0; index < items.length; index+=1){
@@ -81,7 +82,7 @@ class Game{
 		return li;
 	}
 
-	//this method checks to see if the card can be flipped over
+	//this method checks to see if the card can be flipped over.
 	checkForPossibleFlip(targetElement){
 		if(targetElement.getAttribute('class') === 'hidden'){
 			targetElement.setAttribute('class', targetElement.getAttribute('card-type'));
