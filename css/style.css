@@ -1,0 +1,25 @@
+ul{
+	height: 95vh;
+	padding-left: 0px;
+	max-width: 78%;
+	border: thin solid black;
+	border-radius: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	background-image: linear-gradient(to bottom right, #00d3ba, #b479d6);
+	padding-top: 2%;
+
+
+}
+
+li{
+	display: block;
+	height: 20vh;
+	width:20%;
+	margin: 0 3% 2% 0;
+	border: thin solid black;
+	border-radius: 10px;
+	list-style: none;
+	background-color: #253d4b;
+}
