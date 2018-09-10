@@ -10,6 +10,14 @@ class Game{
 		this.moveCount+=1;
 		let counter = document.getElementById('counter');
 		counter.innerHTML = `<strong>Moves Made: </strong> ${this.moveCount}`;
+		if(this.moveCount > 18 &&this.moveCount < 28){
+			let stars = document.getElementById('starContainer');
+			stars.innerHTML = `<p class="fa fa-star"></p><p class="fa fa-star"></p>`
+		}
+		if(this.moveCount > 27 &&this.moveCount < 35){
+			let stars = document.getElementById('starContainer');
+			stars.innerHTML = `<p class="fa fa-star"></p>`
+		}
 	}
 	//returns a list of shuffled items.
 	getShuffledItems(){
@@ -31,7 +39,7 @@ class Game{
 		this.cachedCard = null;
 		this.matches +=1;
 		if(this.matches == 8){
-			alert(`You have won! It took ${this.moveCount} moves! Click reset to restart.`)
+			alert(`You have won! It took ${this.moveCount} moves! Click reset to restart.`);
 		}
 	}
 	//this handle comparing two cards. if no card to compare against, it sets it.
@@ -53,14 +61,13 @@ class Game{
 					cachedCard.setAttribute('class', 'hidden');
 					cardToCompare.setAttribute('class', 'hidden');
 					this.cachedCard = null;
-				}, 700)
+				}, 700);
 			}
 
 		}
 	}
 	//this method will resize and shrink card when matched with another.
 	resizeAndShrink(targetElement){
-	
 		setTimeout(()=>{targetElement.setAttribute('style', 'transform: scale(1.2,1.2);')},20);
 		setTimeout(()=>{targetElement.setAttribute('style', 'transform: scale(1.,1.2);');},150);
 
@@ -73,24 +80,24 @@ class Game{
 		li.setAttribute('matched', false);
 		return li;
 	}
+
 	//this method checks to see if the card can be flipped over
 	checkForPossibleFlip(targetElement){
 		if(targetElement.getAttribute('class') === 'hidden'){
 			targetElement.setAttribute('class', targetElement.getAttribute('card-type'));
 			this.compareToCachedCard(targetElement);
-			
 		}
 	}
 
+	//Shakes a item. can be called recersively to extend.
 	shake(targetElement, timesToShake =1){
-		
 			setTimeout(()=>{targetElement.setAttribute('style', 'transform: rotate(15deg);')},99);
 			setTimeout(()=>{targetElement.setAttribute('style', 'transform: rotate(-30deg);')},124);
 			setTimeout(()=>{targetElement.setAttribute('style', 'transform: rotate(0deg);')},150);
 			if(timesToShake >1){
 				setTimeout(()=>{this.shake(targetElement, timesToShake-1)}, 100);
 			}
-	}	
+	}
 
 	// this function returns a randomized unordered list inside a document frag to add to page.
 	createCards(){
@@ -106,6 +113,4 @@ class Game{
 		fragment.appendChild(ul);
 		return fragment;
 	}
-
-
 }
