@@ -1,9 +1,18 @@
 //game class that handles logic
 class Game{
-	constructor(){
+	constructor(modal, timer){
 		this.cachedCard = null;
 		this.moveCount = 0;
 		this.matches= 0;
+		this.modal = modal;
+		this.timer = timer
+		this.timer.start();
+		this.starCount = 3;
+		this.timer.addEventListener("secondsUpdated", function(e){
+		    let timerBox = document.getElementById("timerBox");
+		    timerBox.innerHTML = timer.getTimeValues().toString();
+		});
+
 	}
 
 	//updates amount of moves taken.
@@ -11,13 +20,15 @@ class Game{
 		this.moveCount+=1;
 		let counter = document.getElementById('counter');
 		counter.innerHTML = `<strong>Moves Made: </strong> ${this.moveCount}`;
-		if(this.moveCount > 18 &&this.moveCount < 28){
+		if(this.moveCount > 18 &&this.moveCount < 20){
 			let stars = document.getElementById('starContainer');
 			stars.innerHTML = `<p class="fa fa-star"></p><p class="fa fa-star"></p>`
+			this.starCount -=1;
 		}
-		if(this.moveCount > 27 &&this.moveCount < 35){
+		if(this.moveCount > 27 &&this.moveCount < 29){
 			let stars = document.getElementById('starContainer');
 			stars.innerHTML = `<p class="fa fa-star"></p>`
+			this.starCount -=1;
 		}
 	}
 	//returns a list of shuffled items to be used as icons in game.
@@ -39,9 +50,22 @@ class Game{
 		this.cachedCard.setAttribute('matched', true);
 		this.cachedCard = null;
 		this.matches +=1;
+
+		//this is our win condition.
 		if(this.matches == 8){
-			alert(`You have won! It took ${this.moveCount} moves! Click reset to restart.`);
+			this.showModal();
 		}
+	}
+
+	showModal(){
+    	this.modal.style.display = 'block';
+    	let contents = document.getElementsByClassName('modal-content')[0];
+    	contents.innerHTML += `
+    	<h2>It took you ${this.timer.getTimeValues().toString()} to beat the game!</h2>
+    	<p>You earned a star rating of ${this.starCount}!</p>
+    	<p>To play again, click <a href="">Here!</a>
+    	`
+    	this.timer.stop();
 	}
 	//this handle comparing two cards. if no card to compare against, it sets it.
 	compareToCachedCard(cardToCompare){

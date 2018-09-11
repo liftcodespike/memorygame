@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head lang="en">
+	 <meta charset="utf-8">
 	<title>Memory Game</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/small.css">
+	<link rel="stylesheet" type="text/css" href="css/modal.css">
+	<script src="nodE_modules/easytimer.js/dist/easytimer.min.js"></script>
 	<script type="text/javascript" src="js/game.js"></script>
 </head>
 <body>
+	<div id="myModal" class="modal">
+	 	<div class="modal-content">
+		    <button class="close">&times;</button>
+		    <h1>Congratulations on Winning!</h1>
+		</div>
+	</div>
+	<section id="timerBox"></section>
 	<section id="counter">
 		<strong>Moves Made: </strong>0
 	</section>
