@@ -1,26 +1,26 @@
-#Memory Game!
+# Memory Game!
 A simple html based memory game.
 
-##Prerequisites
+## Prerequisites
 
-*A Browser
-*Some free time on your hands ;)
-
-
-
-###Built With
-*HTML5
-*CSS
-*Javascript
-*npm
+* A Browser
+* Some free time on your hands ;)
 
 
-###Authors
+
+### Built With
+* HTML5
+* CSS
+* Javascript
+* npm
+
+
+### Authors
 Ray Bell
 
 
 
-###Acknowledgments
+### Acknowledgments
 * Udacity
 * Google
 
